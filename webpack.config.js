@@ -14,13 +14,20 @@ module.exports = {
     hot: true
   },
   module: {
-    rules: [{
-      test: /\.tsx$/,
-      loader: 'awesome-typescript-loader'
-    }, {
-      test: /\.ts$/,
-      loader: 'ts-loader'
-    }]
+    rules: [
+      {
+        test: [/\.tsx$/, /\.ts$/],
+        loader: 'ts-loader'
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: ['style-loader', 'css-loader', 'sass-loader']
+      },
+      {
+        test: /\.less$/,
+        use: ['style-loader', 'css-loader', 'less-loader']
+      }
+    ]
   },
   plugins: [
     new HtmlWebpackPlugin(),
