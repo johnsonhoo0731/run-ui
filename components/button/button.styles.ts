@@ -10,7 +10,9 @@ export const setSize = (width: string, height: string, disbled?: boolean) => {
       ${!disbled &&
       css`
         width: ${parseFloat(width) + 8 + 'px'};
-        height: ${parseFloat(height) + 3 + 'px'};
+        height: ${parseFloat(height) + 4 + 'px'};
+        margin-top: -2px;
+        margin-left: -4px;
       `}
     }
   `
@@ -30,5 +32,16 @@ export const ButtonStyles = styled.button<ButtonStyleProps>`
       : Theme.color.gray};
   transition: ${(p) => !p.disabled && 'width, 0.1s, height, 0.1s'};
   ${(p) =>
-    p.size && setSize(Config[p.size].width, Config[p.size].height, p.disabled)}
+    setSize(
+      Config[p.size ? p.size : 'medium'].width,
+      Config[p.size ? p.size : 'medium'].height,
+      p.disabled
+    )};
+  ${(p) =>
+    p.originType &&
+    css`
+      border: 1px solid #000000;
+      background: #ffffff;
+      color: #000000;
+    `};
 `

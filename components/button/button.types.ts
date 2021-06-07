@@ -5,6 +5,7 @@ export type ButtonStyleProps = {
   background?: string
   size?: Config.ButtonSize
   color?: string
+  originType?: boolean
 }
 
 export type ButtonProps = {
